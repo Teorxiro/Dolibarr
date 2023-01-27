@@ -14,24 +14,14 @@
 -- along with this program.  If not, see https://www.gnu.org/licenses/.
 
 
-CREATE TABLE llx_story_story(
-	-- BEGIN MODULEBUILDER FIELDS
-	rowid integer AUTO_INCREMENT PRIMARY KEY NOT NULL, 
-	ref varchar(128) DEFAULT '(PROV)' NOT NULL, 
-	label varchar(255), 
-	amount double DEFAULT NULL, 
-	description text, 
-	note_public text, 
-	note_private text, 
-	date_creation datetime NOT NULL, 
-	tms timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 
-	fk_user_creat integer NOT NULL, 
-	fk_user_modif integer, 
-	last_main_doc varchar(255), 
-	import_key varchar(14), 
-	model_pdf varchar(255), 
-	job_rules text, 
-	acceptance_tests text, 
-	title varchar(50)
-	-- END MODULEBUILDER FIELDS
-) ENGINE=innodb;
+-- BEGIN MODULEBUILDER INDEXES
+ALTER TABLE llx_story_story ADD INDEX idx_story_story_rowid (rowid);
+ALTER TABLE llx_story_story ADD INDEX idx_story_story_ref (ref);
+ALTER TABLE llx_story_story ADD CONSTRAINT llx_story_story_fk_user_creat FOREIGN KEY (fk_user_creat) REFERENCES llx_user(rowid);
+ALTER TABLE llx_story_story ADD INDEX idx_story_story_status (status);
+-- END MODULEBUILDER INDEXES
+
+--ALTER TABLE llx_story_story ADD UNIQUE INDEX uk_story_story_fieldxy(fieldx, fieldy);
+
+--ALTER TABLE llx_story_story ADD CONSTRAINT llx_story_story_fk_field FOREIGN KEY (fk_field) REFERENCES llx_story_myotherobject(rowid);
+

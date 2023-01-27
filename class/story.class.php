@@ -129,6 +129,7 @@ class Story extends CommonObject
 		'job_rules' => array('type'=>'html', 'label'=>'JobRules', 'enabled'=>'1', 'position'=>50, 'notnull'=>0, 'visible'=>-1,),
 		'acceptance_tests' => array('type'=>'html', 'label'=>'Tests', 'enabled'=>'1', 'position'=>50, 'notnull'=>0, 'visible'=>-1,),
 		'title' => array('type'=>'varchar(50)', 'label'=>'Title', 'enabled'=>'1', 'position'=>50, 'notnull'=>0, 'visible'=>-1,),
+		'status' => array('type'=>'integer', 'label'=>'Status', 'enabled'=>'1', 'position'=>2000, 'notnull'=>1, 'visible'=>1, 'index'=>1, 'arrayofkeyval'=>array('0'=>'Brouillon', '1'=>'Validé', '9'=>'Annulé'),),
 	);
 	public $rowid;
 	public $ref;
@@ -147,6 +148,7 @@ class Story extends CommonObject
 	public $job_rules;
 	public $acceptance_tests;
 	public $title;
+	public $status;
 	// END MODULEBUILDER PROPERTIES
 
 
